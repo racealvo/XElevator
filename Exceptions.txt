@@ -1,0 +1,5 @@
+1000: Destinations expected, but none given.  The elevator was requested to move, but it has no destination.
+1001: The floor requested is {0}, but must be between 0 and {1},  The user tried to add a floor to the elevator's destination list which was out of range
+1002: Elevator is idle with a destination. The Elevator.Move method may only be called with a moving direction and destination.
+1003: Elevator is out of service. Tried to move the elevator when it was out 
+1004: Elevator direction is contrary to destination. The destination is in the wrong direction.
