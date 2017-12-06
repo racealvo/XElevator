@@ -21,5 +21,15 @@ namespace Elevator
         {
             Console.WriteLine("Elevator {0} is heading {1} currently on floor {2}", id, direction.ToString(), floor);
         }
+
+        public void Report(IXElevator elevator)
+        {
+            Console.WriteLine("Elevator {0} is heading {1} currently on floor {2}", elevator.ID, elevator.Direction.ToString(), elevator.Location);
+        }
+
+        public void Report(IXElevator elevator, int destination)
+        {
+            Console.WriteLine("Elevator {0} is heading {1} currently on floor {2}", elevator.ID, elevator.Direction.ToString(), elevator.Location);
+        }
     }
 }

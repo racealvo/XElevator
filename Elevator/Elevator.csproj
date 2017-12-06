@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Controller.cs" />
     <Compile Include="ElevatorBank.cs" />
+    <Compile Include="ExceptionRepository.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="IElevatorBank.cs" />
     <Compile Include="IStatus.cs" />

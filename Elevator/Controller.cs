@@ -40,6 +40,14 @@ namespace Elevator
 
         }
 
+        public void Call(int floor)
+        {
+            if (floor < 0 || floor > NumberOfFloors)
+            {
+
+            }
+        }
+
 /*
 //        private IXElevator[] Elevators;
 

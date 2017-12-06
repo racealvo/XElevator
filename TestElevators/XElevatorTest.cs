@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Elevator;
 using Moq;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace TestElevators
 {
@@ -75,7 +76,81 @@ namespace TestElevators
 
                 Assert.IsTrue(e.Destinations.Contains(5));
             }
+
+            [TestMethod]
+            [TestCategory("AddDestination")]
+            public void XElevator_AddDestinationCurrentFloor_FloorNotAddedToDestinations()
+            {
+                XElevator e = new XElevator(id: 0);
+                e.Location = 5;
+                e.AddDestination(5);
+
+                Assert.IsTrue(e.Destinations.Count == 1);
+                Assert.IsTrue(e.Destinations.Contains(5));
+            }
+
+            private XElevator ElevatorFactory(Direction direction, int location)
+            {
+                XElevator e = new XElevator(id: 0);
+                e.Location = location;
+                e.Direction = direction;
+                e.AddDestination(5);
+                e.AddDestination(2);
+                e.AddDestination(7);
+                e.AddDestination(1);
+
+                return e;
+            }
+
+            [TestMethod]
+            [TestCategory("AddDestination")]
+            public void XElevator_AddUnorderedDestinationsAndElevatorUp_DestinationsListAscending()
+            {
+                XElevator e = ElevatorFactory(Direction.up, 0);
+                int[] expectedDestinations = new int[] { 1, 2, 5, 7 };
+                int index = 0;
+
+                foreach (int destination in e.Destinations)
+                {
+                    Assert.AreEqual(expectedDestinations[index], destination);
+                    index++;
+                }
+
+                e = ElevatorFactory(Direction.emptyUp, 0);
+                index = 0;
+
+                foreach (int destination in e.Destinations)
+                {
+                    Assert.AreEqual(expectedDestinations[index], destination);
+                    index++;
+                }
+            }
+
+            [TestMethod]
+            [TestCategory("AddDestination")]
+            public void XElevator_AddUnorderedDestinationsAndElevatorDown_DestinationsListDescending()
+            {
+                XElevator e = ElevatorFactory(Direction.down, 10);
+                int[] expectedDestinations = new int[] { 7, 5, 2, 1 };
+                int index = 0;
+
+                foreach (int destination in e.Destinations)
+                {
+                    Assert.AreEqual(expectedDestinations[index], destination);
+                    index++;
+                }
+
+                e = ElevatorFactory(Direction.emptyDown, 10);
+                index = 0;
+
+                foreach (int destination in e.Destinations)
+                {
+                    Assert.AreEqual(expectedDestinations[index], destination);
+                    index++;
+                }
+            }
         }
+
 
         [TestClass]
         public class Move

@@ -70,6 +70,16 @@ namespace Elevator
                 response = floor;
             }
 
+            // Sort the destinations
+            if (Direction == Direction.up || Direction == Direction.emptyUp)
+            {
+                Destinations.Sort();
+            }
+            else
+            {
+                Destinations.Sort((a, b) => -1 * a.CompareTo(b));
+            }
+
             return response;
         }
 
@@ -116,8 +126,9 @@ namespace Elevator
         /// 
         /// </summary>
         public bool Move()
-        {
+        { 
             bool arrived = false;
+            int currentDestination = -1;
 
             ValidateMoveConditions();
 
@@ -147,6 +158,39 @@ namespace Elevator
                 // This call is to simulate the journey of the elevator between floors.
                 Thread.Sleep(Velocity);
             }
+
+            //while (!arrived)
+            //{
+            //    if (Destinations.Contains(Location))
+            //    {
+            //        Destinations.Remove(Location);
+
+            //        // Are we switching direction?
+            //        if (Destinations.Count == 0)
+            //        {
+            //            Thread.Sleep(LoadTime);
+            //        }
+            //        arrived = true;
+            //    }
+
+            //    if (!arrived)
+            //    {
+            //        if (Direction == Direction.up || Direction == Direction.emptyUp)
+            //        {
+            //            Location++;
+            //            Destinations.l
+            //        }
+            //        if (Direction == Direction.down || Direction == Direction.emptyDown)
+            //        {
+            //            Location--;
+            //        }
+
+            //        // This call is to simulate the journey of the elevator between floors.
+            //        Thread.Sleep(Velocity);
+            //    }
+
+            //    Status.Report(this, )
+            //}
 
             return arrived;
         }

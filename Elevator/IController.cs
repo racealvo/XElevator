@@ -8,7 +8,7 @@ namespace Elevator
 {
     public interface IController
     {
-        void LaunchUI(string);
+        //void LaunchUI(string);
         //int FindAvailableElevator(int floor, Direction direction);
         //int Call(int floor, Direction direction);
 
