@@ -4,6 +4,7 @@ using Elevator;
 using Moq;
 using System.Collections.Generic;
 using System.Collections;
+using System.Threading.Tasks;
 
 namespace TestElevators
 {
@@ -158,79 +159,84 @@ namespace TestElevators
             [TestMethod]
             [TestCategory("Move")]
             [ExpectedException(typeof(ArgumentException), "1000: Destinations expected, but none given.")]
-            public void XElevator_MoveIdle_CheckException()
+            public async Task XElevator_MoveIdle_CheckException()
             {
                 XElevator e = new XElevator(id: 0);
                 e.Location = 5;
                 e.Direction = Direction.idle;
-                e.Move();
-            }
-
-            [TestMethod]
-            [TestCategory("Move")]
-            public void XElevator_AddDestination_ArrivedNoWait()
-            {
-                XElevator e = new XElevator(id: 0);
-                e.AddDestination(5);
-                e.Velocity = 2000;
-                e.LoadTime = 500;
-                e.Location = 5;
-                e.Direction = Direction.emptyDown;
-
-                DateTime before = DateTime.Now;
-                bool arrived = e.Move();
-                DateTime after = DateTime.Now;
-
-                double diff = (after - before).TotalMilliseconds;
-                Assert.IsTrue(diff > 500, "Elevator did not load.");
-                Assert.IsTrue(diff < 2000, "Elevator moved.");
-                Assert.IsTrue(e.Location == 5, "Elevator is at the wrong location.");
-                Assert.IsTrue(arrived == true, "Elevator never arrived.");
-            }
-
-            [TestMethod]
-            [TestCategory("Move")]
-            public void XElevator_AddDestination_ArrivedWait()
-            {
-                XElevator e = new XElevator(id: 0);
-                e.AddDestination(3);
-                e.Velocity = 2000;
-                e.LoadTime = 500;
-                e.Location = 5;
-                e.Direction = Direction.emptyDown;
-
-                DateTime before = DateTime.Now;
-                bool arrived = e.Move();
-                DateTime after = DateTime.Now;
-
-                double diff = (after - before).TotalMilliseconds;
-                Assert.IsTrue(diff >= 2000, "Elevator did not move.");
-                Assert.IsTrue(e.Location == 4, "Elevator is at the wrong location.");
-                Assert.IsTrue(arrived == false, "Elevator should not have arrived.");
+                Task<bool> moveElevator = e.Move();
+                bool arrived = await moveElevator;
             }
 
             [TestMethod]
             [TestCategory("Move")]
             [ExpectedException(typeof(ArgumentException), "1002: Elevator is idle with a destination.")]
-            public void XElevator_MoveIdleWithDestination_GenerateException()
+            public async Task XElevator_MoveIdleWithDestination_GenerateException()
             {
                 XElevator e = new XElevator(0);
                 e.Location = 5;
                 e.Direction = Direction.idle;
                 e.AddDestination(10);
-                e.Move();
+                Task<bool> moveElevator = e.Move();
+                bool arrived = await moveElevator;
             }
 
             [TestMethod]
             [TestCategory("Move")]
             [ExpectedException(typeof(ArgumentException), "1003: Elevator is out of service.")]
-            public void XElevator_MoveDisabled_GenerateException()
+            public async Task XElevator_MoveDisabled_GenerateException()
             {
                 XElevator e = new XElevator(0);
                 e.Location = 5;
                 e.Direction = Direction.disabled;
                 e.AddDestination(10);
-                e.Move();
+                Task<bool> moveElevator = e.Move();
+                bool arrived = await moveElevator;
+            }
+
+            [TestMethod]
+            [TestCategory("Move")]
+            public async Task XElevator_AddDestination_ArrivedNoWait()
+            {
+                XElevator e = new XElevator(id: 0);
+                e.AddDestination(5);
+                e.Velocity = 1000;
+                e.LoadTime = 10;
+                e.Location = 5;
+                e.Direction = Direction.emptyDown;
+
+                DateTime before = DateTime.Now;
+                Task<bool> moveElevator = e.Move();
+                bool arrived = await moveElevator;
+                DateTime after = DateTime.Now;
+
+                double diff = (after - before).TotalMilliseconds;
+                Assert.IsTrue(diff > 10, "Elevator did not load.");
+                Assert.IsTrue(diff < 1000, "Elevator moved.");
+                Assert.IsTrue(e.Location == 5, string.Format("Elevator is at the wrong location. Expected 5.  Actual: {0}", e.Location));
+                Assert.IsTrue(arrived == true, "Elevator never arrived.");
+            }
+
+            [TestMethod]
+            [TestCategory("Move")]
+            public async Task XElevator_AddDestination_ArrivedWait()
+            {
+                XElevator e = new XElevator(id: 0);
+                e.AddDestination(3);
+                e.Velocity = 500;
+                e.LoadTime = 10;
+                e.Location = 5;
+                e.Direction = Direction.emptyDown;
+
+                DateTime before = DateTime.Now;
+                Task<bool> moveElevator = e.Move();
+                bool arrived = await moveElevator;
+                DateTime after = DateTime.Now;
+
+                double diff = (after - before).TotalMilliseconds;
+                Assert.IsTrue(diff >= 1000, "Elevator did not move.");
+                Assert.IsTrue(e.Location == 3, string.Format("Elevator is at the wrong location. Expected 3.  Actual: {0}", e.Location));
+                Assert.IsTrue(arrived == true, "Elevator should have arrived.");
             }
         }
     }

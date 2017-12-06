@@ -125,72 +125,48 @@ namespace Elevator
         /// <summary>
         /// 
         /// </summary>
-        public bool Move()
+        public async Task<bool> Move()
         { 
             bool arrived = false;
-            int currentDestination = -1;
 
             ValidateMoveConditions();
 
-            if (Destinations.Contains(Location))
+            while (!arrived)
             {
-                Destinations.Remove(Location);
-
-                // Are we switching direction?
-                if (Destinations.Count == 0)
+                if (Destinations.Contains(Location))
                 {
-                    Thread.Sleep(LoadTime);
+                    Destinations.Remove(Location);
+
+                    // TODO: Status / Ping Event
+                    //Status.Report(this, )
+
+                    // Are we switching direction?
+                    if (Destinations.Count == 0)
+                    {
+                        await Task.Delay(LoadTime);
+                    }
+                    arrived = true;
                 }
-                arrived = true;
+
+                if (!arrived)
+                {
+                    if (Direction == Direction.up || Direction == Direction.emptyUp)
+                    {
+                        Location++;
+                    }
+                    if (Direction == Direction.down || Direction == Direction.emptyDown)
+                    {
+                        Location--;
+                    }
+
+                    // TODO: Status / Ping Event
+                    //Status.Report(this, )
+
+                    // This call is to simulate the journey of the elevator between floors.
+                    await Task.Delay(Velocity);
+                }
+
             }
-
-            if (!arrived)
-            {
-                if (Direction == Direction.up || Direction == Direction.emptyUp)
-                {
-                    Location++;
-                }
-                if (Direction == Direction.down || Direction == Direction.emptyDown)
-                {
-                    Location--;
-                }
-
-                // This call is to simulate the journey of the elevator between floors.
-                Thread.Sleep(Velocity);
-            }
-
-            //while (!arrived)
-            //{
-            //    if (Destinations.Contains(Location))
-            //    {
-            //        Destinations.Remove(Location);
-
-            //        // Are we switching direction?
-            //        if (Destinations.Count == 0)
-            //        {
-            //            Thread.Sleep(LoadTime);
-            //        }
-            //        arrived = true;
-            //    }
-
-            //    if (!arrived)
-            //    {
-            //        if (Direction == Direction.up || Direction == Direction.emptyUp)
-            //        {
-            //            Location++;
-            //            Destinations.l
-            //        }
-            //        if (Direction == Direction.down || Direction == Direction.emptyDown)
-            //        {
-            //            Location--;
-            //        }
-
-            //        // This call is to simulate the journey of the elevator between floors.
-            //        Thread.Sleep(Velocity);
-            //    }
-
-            //    Status.Report(this, )
-            //}
 
             return arrived;
         }
