@@ -62,9 +62,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComponentRegistration.cs" />
+    <Compile Include="IoC\ComponentRegistration.cs" />
     <Compile Include="Controller.cs" />
-    <Compile Include="DependencyResolver.cs" />
+    <Compile Include="IoC\DependencyResolver.cs" />
     <Compile Include="ElevatorBank.cs" />
     <Compile Include="ExceptionRepository.cs" />
     <Compile Include="IController.cs" />
@@ -72,7 +72,7 @@
     <Compile Include="IStatus.cs" />
     <Compile Include="IXElevator.cs" />
     <Compile Include="Logger.cs" />
-    <Compile Include="LoggingInterceptor.cs" />
+    <Compile Include="IoC\LoggingInterceptor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Status.cs" />

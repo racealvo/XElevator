@@ -196,12 +196,13 @@ namespace TestElevators
 
             [TestMethod]
             [TestCategory("Move")]
+            // This method also tests logging.
             public async Task XElevator_AddDestination_ArrivedNoWait()
             {
                 //Initialize the dependency resolver
                 DependencyResolver.Initialize();
 
-                //resolve the type:Rocket
+                //resolve the type:XElevator
                 var e = DependencyResolver.For<IXElevator>();
 
                 //XElevator e = new XElevator(id: 0);
