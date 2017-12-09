@@ -12,5 +12,10 @@ namespace Elevator
         int Location { get; set; }
         int ID { get; set; }
         List<int> Destinations { get; set; }
+        int Velocity { get; set; }
+        int LoadTime { get; set; }
+
+        int AddDestination(int floor);
+        Task<bool> Move();
     }
 }

@@ -5,6 +5,7 @@ Elevator.UnitTests/obj
 Elevator.UnitTests/bin
 TestElevators/bin
 TestElevators/obj
+packages
 packages/Castle.Core.4.2.1
 packages/Moq.4.7.142
 packages/NUnit.3.8.1

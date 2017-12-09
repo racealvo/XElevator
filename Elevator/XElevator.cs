@@ -17,7 +17,7 @@ namespace Elevator
         public int LoadTime { get; set; }
         public Status Status { get; set; }
 
-        public XElevator(int id)
+        public XElevator(int id=0)
         {
             Destinations = new List<int>();
             Direction = Direction.idle;

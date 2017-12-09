@@ -198,7 +198,13 @@ namespace TestElevators
             [TestCategory("Move")]
             public async Task XElevator_AddDestination_ArrivedNoWait()
             {
-                XElevator e = new XElevator(id: 0);
+                //Initialize the dependency resolver
+                DependencyResolver.Initialize();
+
+                //resolve the type:Rocket
+                var e = DependencyResolver.For<IXElevator>();
+
+                //XElevator e = new XElevator(id: 0);
                 e.AddDestination(5);
                 e.Velocity = 1000;
                 e.LoadTime = 10;
