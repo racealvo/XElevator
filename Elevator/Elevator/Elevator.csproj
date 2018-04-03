@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Controller.cs" />
     <Compile Include="Elevator.cs" />
+    <Compile Include="Globals.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="IElevator.cs" />
     <Compile Include="Program.cs" />
