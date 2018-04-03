@@ -9,7 +9,7 @@ namespace Elevator
 {
     interface IElevator
     {
-        int GetCurrentFloor();
+        int CurrentFloor();
         Direction GetStatus();
         void AddFloor();
         ICollection GetFloors();
