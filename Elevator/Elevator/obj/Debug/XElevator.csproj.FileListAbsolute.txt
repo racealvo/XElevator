@@ -1,0 +1,6 @@
+C:\Projects\Sandbox\XElevator\Elevator\Elevator\bin\Debug\Elevator.exe.config
+C:\Projects\Sandbox\XElevator\Elevator\Elevator\bin\Debug\Elevator.exe
+C:\Projects\Sandbox\XElevator\Elevator\Elevator\bin\Debug\Elevator.pdb
+C:\Projects\Sandbox\XElevator\Elevator\Elevator\obj\Debug\XElevator.csprojResolveAssemblyReference.cache
+C:\Projects\Sandbox\XElevator\Elevator\Elevator\obj\Debug\Elevator.exe
+C:\Projects\Sandbox\XElevator\Elevator\Elevator\obj\Debug\Elevator.pdb

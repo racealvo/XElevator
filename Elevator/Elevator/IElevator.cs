@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 
-namespace Elevator
+namespace XElevator
 {
     interface IElevator
     {
-        int CurrentFloor();
+        int CurrentFloor { get; }
         Direction GetStatus();
-        void AddFloor();
-        ICollection GetFloors();
+        AddFloorResponse AddFloor();
+        ICollection Destinations();
+        Direction Run();
     }
 }

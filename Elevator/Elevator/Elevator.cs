@@ -5,18 +5,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Elevator
+namespace XElevator
 {
-    class Elevator : IElevator
+    public class Elevator : IElevator
     {
-        
+        private bool[] destinations;
+
         public int FloorCount { get; set; }
         public int CurrentFloor { get; }
 
         public Elevator(int floors, int floor = 0)
         {
+            if ((floors <= 1) || (floors > 200))
+            {
+                throw new ArgumentOutOfRangeException("A minimum of 2 and maximum of 200 floors required.");
+            }
             FloorCount = floors;
             CurrentFloor = floor;
+            destinations = new bool[floors];
         }
 
         public Direction GetStatus()
@@ -31,7 +37,13 @@ namespace Elevator
             throw new NotImplementedException();
         }
 
-        public ICollection GetFloors()
+        public ICollection Destinations()
+        {
+            throw new NotImplementedException();
+        }
+
+        // This should launch its own thread.
+        public RunResponse Run()
         {
             throw new NotImplementedException();
         }
