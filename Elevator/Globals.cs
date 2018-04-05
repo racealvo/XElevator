@@ -20,9 +20,4 @@ namespace XElevator
         OutOfRange,     // floor requested is too high or too low for the number of floors serviced.
         BadHeading      // return when the requested floor is too high for the downward elevator, or too low for the upward elevator
     }
-
-    public enum RunResponse
-    {
-        OK
-    }
 }

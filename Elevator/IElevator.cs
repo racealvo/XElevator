@@ -13,6 +13,6 @@ namespace XElevator
         Direction GetStatus();
         AddFloorResponse AddFloor();
         ICollection Destinations();
-        Direction Run();
+        RunResponse Run();
     }
 }

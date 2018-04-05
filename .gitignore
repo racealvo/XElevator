@@ -3,8 +3,8 @@ Elevator/obj
 .vs/Elevator/v14/.suo
 Elevator.UnitTests/obj
 Elevator.UnitTests/bin
-TestElevators/bin
-TestElevators/obj
+ElevatorUnitTests/bin
+ElevatorUnitTests/obj
 packages
 packages/Castle.Core.4.2.1
 packages/Moq.4.7.142
