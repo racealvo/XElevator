@@ -9,12 +9,13 @@ namespace Elevator
 {
     class Elevator : IElevator
     {
-        public int Floors { get; set; }
+        
+        public int FloorCount { get; set; }
         public int CurrentFloor { get; }
 
         public Elevator(int floors, int floor = 0)
         {
-            Floors = floors;
+            FloorCount = floors;
             CurrentFloor = floor;
         }
 
@@ -23,7 +24,9 @@ namespace Elevator
             throw new NotImplementedException();
         }
 
-        public void AddFloor()
+        // Add floor to list - only if in range
+        // Run elevator if it is idle 
+        public AddFloorResponse AddFloor()
         {
             throw new NotImplementedException();
         }
