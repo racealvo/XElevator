@@ -61,7 +61,7 @@ namespace TestElevators
 
             [TestMethod]
             [TestCategory("AddDestination")]
-            [ExpectedException(typeof(ArgumentOutOfRangeException), "1001: The floor requested is -1, but must be between 0 and 10")]
+            [ExpectedException(typeof(ArgumentOutOfRangeException), "1001: The floor requested is 11, but must be between 0 and 10")]
             public void XElevator_AddHighFloor_CheckException()
             {
                 XElevator e = new XElevator(id: 0);
