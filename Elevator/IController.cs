@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Elevator
+namespace XElevator
 {
-    class Controller : IController
+    interface IController
     {
     }
 }

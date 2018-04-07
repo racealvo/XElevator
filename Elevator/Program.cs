@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Elevator
+namespace XElevator
 {
-    enum Direction
+    class Program
     {
-        up,
-        down,
-        idle,
-        disabled
+        static void Main(string[] args)
+        {
+        }
     }
 }
