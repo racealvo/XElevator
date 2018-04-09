@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using XElevator;
+using XElevator.Responses;
 
 namespace ElevatorUnitTests
 {
@@ -37,6 +38,30 @@ namespace ElevatorUnitTests
         public void Elevator_Constructor_GoodFloors200_ExpectSuccess()
         {
             Elevator elevator = new Elevator(200);
+            Assert.AreEqual(elevator.FloorCount, 200);
+        }
+        #endregion
+
+        #region AddFloor
+        [TestMethod]
+        public void AddFloor_Add_All_Floors_ExpectSuccess()
+        {
+            Elevator elevator = new Elevator(2);
+            List<int> destinations = null;
+            AddFloorResponse response = null;
+
+            response = elevator.AddFloor(0);
+            destinations = elevator.Destinations();
+            Assert.AreEqual(AddFloorResponseType.OK, response.Type);
+            Assert.AreEqual(1, destinations.Count);
+            Assert.AreEqual(0, destinations[0]);
+
+            response = elevator.AddFloor(1);
+            destinations = elevator.Destinations();
+            Assert.AreEqual(AddFloorResponseType.OK, response.Type);
+            Assert.AreEqual(2, elevator.Destinations().Count);
+            Assert.AreEqual(0, destinations[0]);
+            Assert.AreEqual(1, destinations[1]);
         }
         #endregion
     }

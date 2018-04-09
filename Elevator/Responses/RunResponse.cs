@@ -4,16 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XElevator
+namespace XElevator.Responses
 {
     public enum RunResponseType
     {
-        OK
+        OK,
+        AreadyRunning,
+        Disabled,
+        NoDestinations
     }
 
     public class RunResponse
     {
-        public RunResponseType Response { get; set; }
+        public RunResponseType Type { get; set; }
         public Direction Direction { get; set; }
     }
 }

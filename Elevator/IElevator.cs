@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using XElevator.Responses;
 
 namespace XElevator
 {
     interface IElevator
     {
         int CurrentFloor { get; }
-        Direction GetStatus();
-        AddFloorResponse AddFloor();
-        ICollection Destinations();
+        Direction Status { get; }
+        AddFloorResponse AddFloor(int floor);
+        List<int> Destinations();
         RunResponse Run();
     }
 }

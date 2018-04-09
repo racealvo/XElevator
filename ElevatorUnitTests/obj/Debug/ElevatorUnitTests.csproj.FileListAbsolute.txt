@@ -12,3 +12,10 @@ C:\Projects\Sandbox\XElevator\ElevatorUnitTests\bin\Debug\Elevator.pdb
 C:\Projects\Sandbox\XElevator\ElevatorUnitTests\obj\Debug\ElevatorUnitTests.csprojResolveAssemblyReference.cache
 C:\Projects\Sandbox\XElevator\ElevatorUnitTests\obj\Debug\ElevatorUnitTests.dll
 C:\Projects\Sandbox\XElevator\ElevatorUnitTests\obj\Debug\ElevatorUnitTests.pdb
+C:\Users\Ray-2011\Documents\School\Sandbox\XElevator\ElevatorUnitTests\obj\Debug\ElevatorUnitTests.csprojResolveAssemblyReference.cache
+C:\Users\Ray-2011\Documents\School\Sandbox\XElevator\ElevatorUnitTests\obj\Debug\ElevatorUnitTests.dll
+C:\Users\Ray-2011\Documents\School\Sandbox\XElevator\ElevatorUnitTests\obj\Debug\ElevatorUnitTests.pdb
+C:\Users\Ray-2011\Documents\School\Sandbox\XElevator\ElevatorUnitTests\bin\Debug\ElevatorUnitTests.dll
+C:\Users\Ray-2011\Documents\School\Sandbox\XElevator\ElevatorUnitTests\bin\Debug\ElevatorUnitTests.pdb
+C:\Users\Ray-2011\Documents\School\Sandbox\XElevator\ElevatorUnitTests\bin\Debug\Elevator.exe
+C:\Users\Ray-2011\Documents\School\Sandbox\XElevator\ElevatorUnitTests\bin\Debug\Elevator.pdb

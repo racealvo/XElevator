@@ -50,7 +50,8 @@
     <Compile Include="IElevator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RunResponse.cs" />
+    <Compile Include="Responses\AddFloorResponse.cs" />
+    <Compile Include="Responses\RunResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
