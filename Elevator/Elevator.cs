@@ -16,7 +16,7 @@ namespace XElevator
         public int CurrentFloor { get; }
         public Direction Status { get; }
 
-        public Elevator(int floors, int floor = 0)
+        public Elevator(int floors, int floor = 0, Direction direction = Direction.idle)
         {
             if ((floors <= 1) || (floors > 200))
             {
@@ -25,7 +25,7 @@ namespace XElevator
             FloorCount = floors;
             CurrentFloor = floor;
             destinations = new bool[floors];
-            Status = Direction.idle;
+            Status = direction;
         }
 
         // Add floor to list - only if in range
@@ -44,8 +44,8 @@ namespace XElevator
 
             // Is the floor in the right direction?
             if ( 
-                (((Status == Direction.up)   || (Status == Direction.loadingup))   && (CurrentFloor < floor)) ||
-                (((Status == Direction.down) || (Status == Direction.loadingdown)) && (CurrentFloor > floor)) ||
+                (((Status == Direction.up)   || (Status == Direction.loadingup))   && (CurrentFloor <= floor)) ||
+                (((Status == Direction.down) || (Status == Direction.loadingdown)) && (CurrentFloor >= floor)) ||
                 (Status == Direction.idle)
                )
             {
@@ -60,7 +60,17 @@ namespace XElevator
 
         public List<int> Destinations()
         {
-            throw new NotImplementedException();
+            List<int> list = new List<int>();
+
+            for (int floor=0; floor<FloorCount; floor++)
+            {
+                if (destinations[floor])
+                {
+                    list.Add(floor);
+                }
+            }
+
+            return list;
         }
 
         // This should launch its own thread.
