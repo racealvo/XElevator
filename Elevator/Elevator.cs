@@ -15,8 +15,9 @@ namespace XElevator
         public int FloorCount { get; set; }
         public int CurrentFloor { get; }
         public Direction Status { get; }
+        public int ID { get; }
 
-        public Elevator(int floors, int floor = 0, Direction direction = Direction.idle)
+        public Elevator(int floors, int id, int floor = 0, Direction direction = Direction.idle)
         {
             if ((floors <= 1) || (floors > 200))
             {
@@ -26,6 +27,7 @@ namespace XElevator
             CurrentFloor = floor;
             destinations = new bool[floors];
             Status = direction;
+            ID = id;
         }
 
         // Add floor to list - only if in range
@@ -85,22 +87,22 @@ namespace XElevator
             }
             else
             {
-                // Where is the elevator
-
+                // Where is the elevator?
                 // What are the elevator destinations - which direction am I heading
+
                 // Go!
             }
 
             return response;
         }
 
-        //private async Task<Direction> RunElevator()
-        //{
-        //    // have we arrived at destination - then load/unload
-        //    // have we finished loading and have no destinations - then go idle - notify controller
-        //    // have we finished loading and have destinations - then go
+        private async Task<Direction> RunElevator()
+        {
+            // have we arrived at destination - then load/unload
+            // have we finished loading and have no destinations - then go idle - notify controller
+            // have we finished loading and have destinations - then go
 
-        //    return Direction.idle;
-        //}
+            return Direction.idle;
+        }
     }
 }

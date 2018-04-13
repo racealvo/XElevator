@@ -17,27 +17,27 @@ namespace ElevatorUnitTests
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Elevator_Constructor_BadFloors0_ExpectFail()
         {
-            Elevator elevator = new Elevator(0);
+            Elevator elevator = new Elevator(0, 0);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Elevator_Constructor_BadFloors1_ExpectFail()
         {
-            Elevator elevator = new Elevator(1);
+            Elevator elevator = new Elevator(1, 0);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Elevator_Constructor_BadFloors201_ExpectFail()
         {
-            Elevator elevator = new Elevator(201);
+            Elevator elevator = new Elevator(201, 0);
         }
 
         [TestMethod]
         public void Elevator_Constructor_GoodFloors200_ExpectSuccess()
         {
-            Elevator elevator = new Elevator(200);
+            Elevator elevator = new Elevator(200, 0);
             Assert.AreEqual(elevator.FloorCount, 200);
         }
         #endregion
@@ -46,7 +46,7 @@ namespace ElevatorUnitTests
         [TestMethod]
         public void AddFloor_Add_All_Floors_ExpectSuccess()
         {
-            Elevator elevator = new Elevator(2);
+            Elevator elevator = new Elevator(2, 0);
             List<int> destinations = null;
             AddFloorResponse response = null;
 
@@ -67,7 +67,7 @@ namespace ElevatorUnitTests
         [TestMethod]
         public void AddFloor_Floor_Is_Below_Upward_Elevator_ExpectFailure()
         {
-            Elevator elevator = new Elevator(3, 1, Direction.up);
+            Elevator elevator = new Elevator(3, 0, 1, Direction.up);
             List<int> destinations = null;
             AddFloorResponse response = null;
 
@@ -80,7 +80,7 @@ namespace ElevatorUnitTests
         [TestMethod]
         public void AddFloor_Floor_Is_Above_Downward_Elevator_ExpectFailure()
         {
-            Elevator elevator = new Elevator(3, 1, Direction.down);
+            Elevator elevator = new Elevator(3, 0, 1, Direction.down);
             List<int> destinations = null;
             AddFloorResponse response = null;
 
@@ -93,7 +93,7 @@ namespace ElevatorUnitTests
         [TestMethod]
         public void AddFloor_Floor_Is_Below_LoadingUp_Elevator_ExpectFailure()
         {
-            Elevator elevator = new Elevator(3, 1, Direction.loadingup);
+            Elevator elevator = new Elevator(3, 0, 1, Direction.loadingup);
             List<int> destinations = null;
             AddFloorResponse response = null;
 
@@ -106,7 +106,7 @@ namespace ElevatorUnitTests
         [TestMethod]
         public void AddFloor_Floor_Is_Above_LoadingDown_Elevator_ExpectFailure()
         {
-            Elevator elevator = new Elevator(3, 1, Direction.loadingdown);
+            Elevator elevator = new Elevator(3, 0, 1, Direction.loadingdown);
             List<int> destinations = null;
             AddFloorResponse response = null;
 
@@ -119,7 +119,7 @@ namespace ElevatorUnitTests
         [TestMethod]
         public void AddFloor_Elevator_Is_On_Floor_Of_Upward_Elevator_ExpectSuccess()
         {
-            Elevator elevator = new Elevator(2, 1, Direction.up);
+            Elevator elevator = new Elevator(2, 0, 1, Direction.up);
             List<int> destinations = null;
             AddFloorResponse response = null;
 
@@ -133,7 +133,7 @@ namespace ElevatorUnitTests
         [TestMethod]
         public void AddFloor_Floor_Out_Of_Range_Of_Upward_Elevator_ExpectFailure()
         {
-            Elevator elevator = new Elevator(2, 1, Direction.up);
+            Elevator elevator = new Elevator(2, 0, 1, Direction.up);
             List<int> destinations = null;
             AddFloorResponse response = null;
 
@@ -146,7 +146,7 @@ namespace ElevatorUnitTests
         [TestMethod]
         public void AddFloor_Floor_Out_Of_Range_Of_LoadingUp_Elevator_ExpectFailure()
         {
-            Elevator elevator = new Elevator(2, 1, Direction.loadingup);
+            Elevator elevator = new Elevator(2, 0, 1, Direction.loadingup);
             List<int> destinations = null;
             AddFloorResponse response = null;
 
