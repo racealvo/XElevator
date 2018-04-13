@@ -1,6 +1,6 @@
 Elevator/bin
 Elevator/obj
-.vs/Elevator/v14/.suo
+.vs/Elevator/v14/*.suo
 Elevator.UnitTests/obj
 Elevator.UnitTests/bin
 ElevatorUnitTests/bin
