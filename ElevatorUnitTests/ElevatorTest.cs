@@ -158,7 +158,17 @@ namespace ElevatorUnitTests
         #endregion
 
         #region Run
+        [TestMethod]
+        public void RunIt()
+        {
+            Elevator elevator = new Elevator(2, 0);
 
+            List<int> destinations = null;
+            AddFloorResponse response = null;
+
+            elevator.AddFloor(1);
+            elevator.Run();
+        }
         #endregion
     }
 }

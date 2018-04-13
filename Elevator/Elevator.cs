@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using XElevator.Responses;
 
@@ -10,14 +11,16 @@ namespace XElevator
 {
     public class Elevator : IElevator
     {
-        private bool[] destinations;
-
         public int FloorCount { get; set; }
         public int CurrentFloor { get; }
         public Direction Status { get; }
         public int ID { get; }
 
-        public Elevator(int floors, int id, int floor = 0, Direction direction = Direction.idle)
+        private bool[] destinations;
+        private bool elevatorRunning = false;
+        private int Rate { get; }
+
+        public Elevator(int floors, int id, int floor = 0, Direction status = Direction.idle, int rate = 5000)
         {
             if ((floors <= 1) || (floors > 200))
             {
@@ -26,8 +29,9 @@ namespace XElevator
             FloorCount = floors;
             CurrentFloor = floor;
             destinations = new bool[floors];
-            Status = direction;
+            Status = status;
             ID = id;
+            Rate = rate;
         }
 
         // Add floor to list - only if in range
@@ -87,22 +91,46 @@ namespace XElevator
             }
             else
             {
-                // Where is the elevator?
-                // What are the elevator destinations - which direction am I heading
+                if (elevatorRunning)
+                {
+                    response.Direction = Status;
+                    response.Type = RunResponseType.AreadyRunning;
+                }
+                else
+                {
+                    RunElevator();
+                    Console.WriteLine("Elevator {} is running.", ID);
+                    // Where is the elevator?
+                    // What are the elevator destinations - which direction am I heading
 
-                // Go!
+                    // Go!
+                }
             }
 
             return response;
         }
 
-        private async Task<Direction> RunElevator()
+        private Task<Direction> RunElevator()
         {
-            // have we arrived at destination - then load/unload
-            // have we finished loading and have no destinations - then go idle - notify controller
-            // have we finished loading and have destinations - then go
+            Thread.Sleep(10000);
+            Console.WriteLine("Elevator {0} is done running.", ID);
+            return Task.FromResult(Direction.idle);
 
-            return Direction.idle;
+
+            //elevatorRunning = true;
+
+            //List<int> destination_list = Destinations();
+            //while (destination_list.Count > 0)
+            //{
+
+            //    destination_list = Destinations();
+            //}
+            //// have we arrived at destination - then load/unload
+            //// have we finished loading and have no destinations - then go idle - notify controller
+            //// have we finished loading and have destinations - then go
+
+            //elevatorRunning = false;
+            //return Direction.idle;
         }
     }
 }
