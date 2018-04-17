@@ -80,7 +80,7 @@ namespace XElevator
         }
 
         // This should launch its own thread.
-        public RunResponse Run()
+        public async Task<RunResponse> Run()
         {
             RunResponse response = new RunResponse();
 
@@ -99,7 +99,7 @@ namespace XElevator
                 else
                 {
                     RunElevator();
-                    Console.WriteLine("Elevator {} is running.", ID);
+                    Console.WriteLine("Elevator Run {0} is running.  This should be first!", ID);
                     // Where is the elevator?
                     // What are the elevator destinations - which direction am I heading
 
@@ -113,7 +113,7 @@ namespace XElevator
         private Task<Direction> RunElevator()
         {
             Thread.Sleep(10000);
-            Console.WriteLine("Elevator {0} is done running.", ID);
+            Console.WriteLine("Elevator RunElevator Task {0} is done running.  This should be second.", ID);
             return Task.FromResult(Direction.idle);
 
 

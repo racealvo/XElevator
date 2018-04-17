@@ -14,6 +14,6 @@ namespace XElevator
         Direction Status { get; }
         AddFloorResponse AddFloor(int floor);
         List<int> Destinations();
-        RunResponse Run();
+        Task<RunResponse> Run();
     }
 }
