@@ -167,8 +167,7 @@ namespace ElevatorUnitTests
             AddFloorResponse response = null;
 
             elevator.AddFloor(1);
-            Task<RunResponse> task = elevator.Run();
-            task.Wait();
+            elevator.Run();
         }
         #endregion
     }

@@ -98,8 +98,9 @@ namespace XElevator
                 }
                 else
                 {
-                    RunElevator();
+                    Task<Direction> task = RunElevator();
                     Console.WriteLine("Elevator Run {0} is running.  This should be first!", ID);
+                    await task;
                     // Where is the elevator?
                     // What are the elevator destinations - which direction am I heading
 
@@ -110,11 +111,12 @@ namespace XElevator
             return response;
         }
 
-        private Task<Direction> RunElevator()
+        private async Task<Direction> RunElevator()
         {
-            Thread.Sleep(10000);
+            await Task.Delay(TimeSpan.FromSeconds(5)).ConfigureAwait(false);
             Console.WriteLine("Elevator RunElevator Task {0} is done running.  This should be second.", ID);
-            return Task.FromResult(Direction.idle);
+            //return Task.FromResult(Direction.idle);
+            return Direction.idle;
 
 
             //elevatorRunning = true;
